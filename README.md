@@ -49,7 +49,7 @@ functions and train and validation datasets.
 
 ## Data
 
-The data needed for this project was provided by [Agricultural-Vision](https://www.agriculture-vision.com/agriculture-vision-2020/dataset)- an independent research
+The data needed for this project was provided by [Agricultural-Vision](https://www.agriculture-vision.com/agriculture-vision-2020/dataset)  -an independent research
 board for the research and development of computer vision technology for agriculture. The dataset is
 large scale and high quality images of aerial farmlands for the advanced study of agricultural patterns.
 The dataset was precisely annotated by professional agronomists with a strict quality assurance process.
