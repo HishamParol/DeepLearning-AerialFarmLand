@@ -7,3 +7,6 @@ pictures are fed to advanced convolutional neural networks to analyse the agricu
 various deep learning-based segmentation models are studied and implemented. This project selected
 three popular models to fit agricultural data and results are evaluated.This technology will enable us to take full advantage of this technology in monitoring the real-time farmlands and identifying patterns to quickly respond and take action. Doing this can reduce the usage of herbicides in farmlands
 thus reducing labour costs and environmental impacts.
+
+
+Reasearch Paper is available [here](https://github.com/HishamParol/DeepLearning-AerialFarmLand/blob/master/ResearchPaper.pdf)
