@@ -71,13 +71,13 @@ about spatial location. Only the presence of a class label is determined. But in
 
 To ease that problem, an encoder-Decoder architecture is introduced for semantic segmentation tasks. This network usually has 3 main components - Convolutions, down sampling and up sampling. On the encoder side, the network performs down sampling to perform deeper convolutions without requiring more memory. This part looks like a regular DCNN without fully connected layers. We can also use pre-trained models to extract features on the encoder side. Down sampling in neural networks can be done by using convolutional striding or pooling. The output of the first stage is a compressed feature vector with smaller spatial dimensions. Then we feed this compressed feature vector to the up sampling stage to reconstruct our original size. The goal is to increase the spatial dimensions so that the output is the same size as the original image. Here we use transpose convolutions to convert deep and narrow vectors to wider and shallow ones. Some of the popular networks implemented based on encoder-decoder architectures are FCNs, U-Net, SegNet etc. Experiments prove that the encoder-decoder architecture has achieved a good performance in many segmentation datasets.
 
-##Results
+## Results
 
-| Models       | mIoU         | Cool  |
-| ------------- |:-------------:| -----:|
-| U-Net      | 0.428| $1600 |
-| FCN     | 0.422      |   $12 |
-| DeepLabv3+ | 0.441      |    $1 |
+| Models       | mIoU         | 
+| ------------- |:-------------:| 
+| U-Net      | 0.428| 
+| FCN     | 0.422      |   
+| DeepLabv3+ | 0.441      |    
 
 
 
