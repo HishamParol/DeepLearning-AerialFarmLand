@@ -9,4 +9,16 @@ three popular models to fit agricultural data and results are evaluated.This tec
 thus reducing labour costs and environmental impacts.
 
 
-Reasearch Paper is available [here](https://github.com/HishamParol/DeepLearning-AerialFarmLand/blob/master/ResearchPaper.pdf)
+
+Reasearch paper is available [here](https://github.com/HishamParol/DeepLearning-AerialFarmLand/blob/master/ResearchPaper.pdf)
+
+# How to setup and run the project
+
+Semantic segmentation model of agricultural farmland images are build using Python's Django framework. This function will run on multiple Operating Systems including Windows, Linux, and MacOS.
+
+See installation for full installation instructions. You will need a modern GPU with CUDA support for best performance. AMD GPUs are partially supported.
+
+This project has two entry points:
+1- Train a model from scratch and see the evaluation metrics. 
+
+2- Predict a new test image and see the results. 
