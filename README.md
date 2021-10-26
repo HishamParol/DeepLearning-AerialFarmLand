@@ -62,7 +62,7 @@ flown over various corn and soybean fields around Illinois and Iowa (USA).
 ## Building a semantic segmentation deep learning model using TensorFlow
 
 1. Data Pre-processing
-.1. Data statistics
+⋅⋅1. Data statistics
 .2. Choosing images with weed clusters
 .3. Data Augmentation
 ..1. Geometric Augmentation
