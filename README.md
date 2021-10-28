@@ -73,15 +73,27 @@ Choice of geometric transformation is primarily based on understanding the augme
 #### Colour Transformation - Data Augmentation
 Performing transformations in the colour channels space is another approach that is very reasonable to achieve. Digitally, Image data is encoded as a tensor of the dimension (height × width × colour channels). Colour augmentation includes isolating a single colour channel such as R, G, B. Histogram equalization for adjusting the contrast, Controlling the Brightness, Saturation and Hue. These techniques address various environmental conditions in the real world such as sunny weather (High brightness), cloud shades, nature of soils etc. Colour augmentation is used to stimulate a brighter or darker environment by decreasing or increasing the pixel values respectively.
 
-### 3. Build and Train models
-In this project, the dataset is trained on prominent and widely used deep learning-based semantic segmentation models such as FCN, U-Net and DeepLabv3+. Pre-trained models such as VGG16 and Xception are used in the encoder side of FCN and DeepLabv3+. 
+### 2. Build and Train models
+In this project, the dataset is trained on prominent and widely used deep learning-based semantic segmentation models such as FCN, U-Net and DeepLabv3+. Pre-trained models such as VGG16 and Xception are used in the encoder side of FCN and DeepLabv3+.
 
-The first model employed here is Fully Convolutional Network (FCN). They employ locally connected layers such as convolution, pooling and up sampling. In a regular CNN network, if the fully connected layers at the end are replaced by a convolutional layer. We get coarse spatial features as output instead
-of vectors. This can be further up sampled to get the segmented image.
+#### U-Net Model
+As the name suggests. U-Net has a U -Shaped architecture, where the first part is a contraction path and is followed by an expansion path. U-Net utilises dense skip connections to fully leverage the features from each layer. The contraction path is also called the encoder side and the expansion path is called the decoder. The characteristics from each layer in the contraction path are connected to the symmetrical layers in the expansion path. The network architecture is shown in the figure below.
+Read more about U-net here @
 
+#### Fully Convolutional Network (FCN) Model
+The first model employed here is Fully Convolutional Network (FCN). They employ locally connected layers such as convolution, pooling and up sampling. In a regular CNN network, if the fully connected layers at the end are replaced by a convolutional layer. We get coarse spatial features as output instead of vectors. This can be further up sampled to get the segmented image.
+
+#### DeepLabv3+ - DeepLab series Model
+Invented by Google and the most advanced model of the DeepLab series, DeepLabv3+ extends DeepLabv3 by combining a simple yet efficient decoder module to improve the segmentation results, especially along object boundaries. The previous version - DeepLabv3 employs several parallel atrous convolutions with different rates to capture the contextual information at multiple scales. The encoder-decoder architecture used in U-net has been proved to be useful in recovering spatial information. Both of these concepts are combined In DeepLabv3+ making it a superior model in the DeepLab series. The DeepLab v3+ offers an architecture for controlling signal decimation and learning multi-scale
+contextual features. The main three components of DeeplabV3+ are Atrous convolution and Atrous Spatial Pyramid Pooling
+(ASPP), Encoder and Decoder
+
+Read more about DeepLabv3+ here
+
+#### Deep Learning framework and library
 The architecture is built using Keras - A high-level API for Google's TensorFlow library. Keras is a popular choice for deep learning as it is highly integrated into TensorFlow. TensorFlow also offers various tools for visualization, debugging, running models on browsers etc. Building a model in Keras is straightforward and can be implemented using fewer lines of code unlike other libraries such as PyTorch. Keras is ideal for building complex and advanced models using its functional API and layers.The Keras architecture of the proposed three models is illustrated in the diagram below.
 
-### 4. Transfer Learning
+### 3. Transfer Learning
 Transfer learning is a method, where a model used for a particular task is reused to train a second model. Given the computation and time resources of deep learning models, Transfer learning is used as a starting point to allow rapid progress and improve performance.Assuming that the general features of the base model may align with the features of weed such as shape, size and colour, pre-trained models trained on PASCAL VOC 2011 and Cityscaper Image datasets were chosen.
 
 In this work, the following backbone models were used as the base model:
@@ -89,8 +101,8 @@ In this work, the following backbone models were used as the base model:
 ###### Xception: Used in DeepLabV3+ pre-trained on PASCAL VOC 2011 and City Scrapes
 ###### MobileNetV2: Used in DeepLabV3+ pre-trained on PASCAL VOC 2011 and City Scrapes.
 
-### 5. Evaluation results
-### 6. Prediction 
+### 4. Evaluation results
+### 5. Prediction 
 
 ## Model Architecture
 
