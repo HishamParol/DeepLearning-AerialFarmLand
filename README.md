@@ -62,7 +62,10 @@ flown over various corn and soybean fields around Illinois and Iowa (USA).
 ## Building a semantic segmentation deep learning model using TensorFlow
 
 1. Data Pre-processing
-2. Build and Train models
+###CHOOSING IMAGES WITH WEED CLUSTERS
+In this process, Masked Images in the ‘weed_cluster’ folder were analysed to study the presence of weeds. After careful analysis, it is found that the images that don't have weed clusters are fully background images.The black area represents the background (crops) and white represents the annotated weed clusters.Converting images to NumPy arrays, and analysing the pixel information, all the pixel values in the black images are of value 255. Thus a python code is implemented to select only images having different pixel values (black and white pixels) in their corresponding NumPy arrays.
+
+3. Build and Train models
 4. Transfer Learning
 5. Evaluation results
 6. Prediction 
