@@ -102,18 +102,35 @@ In this work, the following backbone models were used as the base model:
 ###### MobileNetV2: Used in DeepLabV3+ pre-trained on PASCAL VOC 2011 and City Scrapes.
 
 ### 4. Evaluation results
+#### Evaluation Metrics
+In this project, mean Intersection-over-Union (mIoU) is used as a main quantitative evaluation metric, which is one of the most commonly used measures in semantic segmentation datasets. The mIoU is computed as:
+
+Where c is the number of annotation types (c = 2 in this dataset, with 1 pattern + background), P(c) and T(c) are the predicted mask and ground truth mask of class c respectively. For pixels in each predicted image, a prediction of a masked area label will be counted as a correct pixel classification for that label, and a prediction that does not contain any ground truth labels will be counted as an incorrect classification for all ground truth labels.
+
+#### Hyperparameter Tuning
+It is important to say that at this level little is known about the exact impact of hyper-parameters on the performance of models.The strategy of this stage is based on a trial and error approach, where we customize hyperparameters, expecting to see improvement in results. Following parameters have been selected for this process -  batch size, selection of optimizers, loss functions, learning rates and evaluation metrics.
+
+##### Batch Size
+Number of samples processed before the model gets updated is known as batch size. A large batch size requires more computation power and training becomes slower. On the other hand, using a small batch size cannot guarantee global minima but converges to a good solution.
+
+| Models       | Batch Size         | mIoU|
+| ------------- |:-------------:|:-------------:| 
+| FCN     |8  | 0.428| 
+| FCN     |16  | 0.422      |   
+| U-Net |8 | 0.441      | 
+| U-Net      |16  | 0.428| 
+| DeepLabv3+ |8  | 0.422      |   
+| DeepLabv3+ |16 | 0.441      | 
+
+##### Selection of optimizers
+##### Loss functions
+##### Learning rate
+
+
+
 ### 5. Prediction 
 
-## Model Architecture
 
-### Concept of Encoder-Decoder Network
-
-The most important concept used in semantic segmentation is explained in detail. In recent years, the convolutional neural network (CNN) has made remarkable achievements in semantic segmentation. Nowadays most semantic segmentation networks are based on the concept of encoder-decoder architecture, where it has an encoder side to extract the feature vectors and a decoder side for recovering feature map resolution.
-
-In regular Image Classification Deep Convolutional Neural Network (DCNN) models, it takes images as input and outputs a single value representing the label of that image. It has four main operations, namely - Convolutions, activation function, pooling, and fully connected layers. When we pass the image through these four layers it presents a feature vector with probabilities of each class. In this network, we assign a single label to an entire image. In classification problems, we don't care much
-about spatial location. Only the presence of a class label is determined. But in segmentation, it is very important to preserve spatial information. Here we want to categorize each pixel in that image. Understanding images at the pixel level is important here. Hence regular DCNN Models are not suitable. These models reduce spatial characteristics which are critical in semantic segmentation. Thus instead of having pooling and fully connected layers, we can set up a convolution layer having a stride of 1 and the same padding. This preserves the input dimension and spatial information. However, this approach adds another disadvantage to the performance and cost - High memory and computation requirements.
-
-To ease that problem, an encoder-Decoder architecture is introduced for semantic segmentation tasks. This network usually has 3 main components - Convolutions, down sampling and up sampling. On the encoder side, the network performs down sampling to perform deeper convolutions without requiring more memory. This part looks like a regular DCNN without fully connected layers. We can also use pre-trained models to extract features on the encoder side. Down sampling in neural networks can be done by using convolutional striding or pooling. The output of the first stage is a compressed feature vector with smaller spatial dimensions. Then we feed this compressed feature vector to the up sampling stage to reconstruct our original size. The goal is to increase the spatial dimensions so that the output is the same size as the original image. Here we use transpose convolutions to convert deep and narrow vectors to wider and shallow ones. Some of the popular networks implemented based on encoder-decoder architectures are FCNs, U-Net, SegNet etc. Experiments prove that the encoder-decoder architecture has achieved a good performance in many segmentation datasets.
 
 ## Results
 
