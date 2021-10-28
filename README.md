@@ -61,16 +61,36 @@ used for the segmentation task. These images were captured by special mounted ca
 flown over various corn and soybean fields around Illinois and Iowa (USA).
 ## Building a semantic segmentation deep learning model using TensorFlow
 
-1. Data Pre-processing
+### 1. Data Pre-processing
 
-### CHOOSING IMAGES WITH WEED CLUSTERS
+#### Choosing images with weed clusters
 
 In this process, Masked Images in the ‘weed_cluster’ folder were analysed to study the presence of weeds. After careful analysis, it is found that the images that don't have weed clusters are fully background images.The black area represents the background (crops) and white represents the annotated weed clusters.Converting images to NumPy arrays, and analysing the pixel information, all the pixel values in the black images are of value 255. Thus a python code is implemented to select only images having different pixel values (black and white pixels) in their corresponding NumPy arrays.
 
-3. Build and Train models
-4. Transfer Learning
-5. Evaluation results
-6. Prediction 
+#### Geometric Transformation - Data Augmentation
+Choice of geometric transformation is primarily based on understanding the augmentation in the context of the safety of the application. Safety refers to the likelihood of preserving the label post transform. For example, cropping, rotation, flipping are safe on agricultural field datasets. These augmentations address the broad scope of challenges in the cultivation of corn and soybeans. This data augmentation technique is used for improving the quality of the dataset with real-world weeds captured by drones. Key assumptions include capturing aerial images at various angles, depths and directions.
+
+#### Colour Transformation - Data Augmentation
+Performing transformations in the colour channels space is another approach that is very reasonable to achieve. Digitally, Image data is encoded as a tensor of the dimension (height × width × colour channels). Colour augmentation includes isolating a single colour channel such as R, G, B. Histogram equalization for adjusting the contrast, Controlling the Brightness, Saturation and Hue. These techniques address various environmental conditions in the real world such as sunny weather (High brightness), cloud shades, nature of soils etc. Colour augmentation is used to stimulate a brighter or darker environment by decreasing or increasing the pixel values respectively.
+
+### 3. Build and Train models
+In this project, the dataset is trained on prominent and widely used deep learning-based semantic segmentation models such as FCN, U-Net and DeepLabv3+. Pre-trained models such as VGG16 and Xception are used in the encoder side of FCN and DeepLabv3+. 
+
+The first model employed here is Fully Convolutional Network (FCN). They employ locally connected layers such as convolution, pooling and up sampling. In a regular CNN network, if the fully connected layers at the end are replaced by a convolutional layer. We get coarse spatial features as output instead
+of vectors. This can be further up sampled to get the segmented image.
+
+The architecture is built using Keras - A high-level API for Google's TensorFlow library. Keras is a popular choice for deep learning as it is highly integrated into TensorFlow. TensorFlow also offers various tools for visualization, debugging, running models on browsers etc. Building a model in Keras is straightforward and can be implemented using fewer lines of code unlike other libraries such as PyTorch. Keras is ideal for building complex and advanced models using its functional API and layers.The Keras architecture of the proposed three models is illustrated in the diagram below.
+
+### 4. Transfer Learning
+Transfer learning is a method, where a model used for a particular task is reused to train a second model. Given the computation and time resources of deep learning models, Transfer learning is used as a starting point to allow rapid progress and improve performance.Assuming that the general features of the base model may align with the features of weed such as shape, size and colour, pre-trained models trained on PASCAL VOC 2011 and Cityscaper Image datasets were chosen.
+
+In this work, the following backbone models were used as the base model:
+###### VGG16: Used in FCN Network ‘Very Deep Convolutional Networks for Large-Scale Image Recognition” Pretrained on PASCAL VOC 2011 dataset
+###### Xception: Used in DeepLabV3+ pre-trained on PASCAL VOC 2011 and City Scrapes
+###### MobileNetV2: Used in DeepLabV3+ pre-trained on PASCAL VOC 2011 and City Scrapes.
+
+### 5. Evaluation results
+### 6. Prediction 
 
 ## Model Architecture
 
