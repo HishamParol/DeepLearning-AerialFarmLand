@@ -144,6 +144,7 @@ Number of samples processed before the model gets updated is known as batch size
 
 Markdown | Less | Pretty
 --- | --- | ---
+Result | Result2 | result
 *Still* | `renders` | **nicely**
 1 | 2 | 3
 
