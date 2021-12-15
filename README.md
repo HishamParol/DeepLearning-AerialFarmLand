@@ -10,7 +10,9 @@ thus reducing labour costs and environmental impacts.
 
 
 
-Reasearch paper is available [here](https://github.com/HishamParol/DeepLearning-AerialFarmLand/blob/master/ResearchPaper.pdf)
+Reasearch paper is available [here](https://github.com/HishamParol/DeepLearning-AerialFarmLand/blob/master/ResearchPaper.pdf) </br>
+**Key tools: TensorFlow, Keras, OpenCV, PIL, Jupyter Notebook, Django, Visual Studio Code 2019** </br>
+**Language: Python, HTML, CSS, JavaScript** </br>
 
 ## How to setup and run the project
 
